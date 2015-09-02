@@ -40,7 +40,7 @@ public class MainActivity extends AppCompatActivity {
 
         @Override
         protected String doInBackground(String... urls) {
-            return " ";
+            return null;
         }
     }
 }
