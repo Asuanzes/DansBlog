@@ -16,12 +16,11 @@
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true" />
 
-    <ScrollView
+    <ListView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/scrollView"
-        android:layout_below="@+id/btnParse"
-        android:layout_alignRight="@+id/btnParse"
-        android:layout_alignEnd="@+id/btnParse" />
+        android:id="@+id/listView"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/btnParse" />
 
 </RelativeLayout>

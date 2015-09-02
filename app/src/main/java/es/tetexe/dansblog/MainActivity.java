@@ -8,7 +8,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
-import android.widget.ScrollView;
+import android.widget.ListView;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -20,7 +20,8 @@ public class MainActivity extends AppCompatActivity {
 
 
     Button btnParse;
-    ScrollView scrollView;
+    ListView listView;
+    String xmlData;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,12 +30,13 @@ public class MainActivity extends AppCompatActivity {
 
 
         btnParse = (Button) findViewById(R.id.btnParse);
-        scrollView = (ScrollView) findViewById(R.id.scrollView);
+        listView = (ListView) findViewById(R.id.listView);
 
         btnParse.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                ParseApplications parse = new ParseApplications(xmlData);
+                 boolean operationStatus = parse.process();
             }
         });
 
@@ -83,12 +85,13 @@ public class MainActivity extends AppCompatActivity {
         @Override
         protected void onPostExecute(String result) {
             Log.d("OnpostExecute", myXmlData);
+            xmlData = myXmlData;
 
         }
 
         private String downloadXML(String theUrl) throws IOException {
 
-            int BUFFER_SIZE = 2000000;
+            int BUFFER_SIZE = 2000;
 
             InputStream is = null;
 

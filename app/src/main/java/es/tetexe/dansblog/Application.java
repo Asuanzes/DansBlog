@@ -7,7 +7,9 @@ public class Application {
 
     private String title;
     private String description;
-    private String content;
+    private String pubDate;
+
+
 
 
     public String getTitle() {
@@ -26,11 +28,13 @@ public class Application {
         this.description = description;
     }
 
-    public String getContent() {
-        return content;
+    public String getPubDate() {
+        return pubDate;
     }
 
     public void setContent(String content) {
-        this.content = content;
+        this.pubDate = content;
     }
+
+
 }

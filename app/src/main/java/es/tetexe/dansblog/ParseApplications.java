@@ -32,8 +32,12 @@ public class ParseApplications {
 
         boolean operationStatus = true;
         Application currentRecord = null;
+
         boolean inItem = false;
+
         String textValue = "";
+
+
 
         try {
 
@@ -44,24 +48,31 @@ public class ParseApplications {
             xpp.setInput(new StringReader(this.data));
             int eventType = xpp.getEventType();
 
+
             while (eventType != XmlPullParser.END_DOCUMENT) {
 
                 String tagName = xpp.getName();
 
-              if (eventType == XmlPullParser.START_TAG) {
 
 
-                    if (tagName.equalsIgnoreCase("item")) {
+                if (eventType == XmlPullParser.START_TAG) {
 
-                        inItem = true;
-                        currentRecord = new Application();
-                    }
+
+                  if (tagName.equalsIgnoreCase("item")) {
+
+                      inItem = true;
+                      currentRecord = new Application();
+                  }
+
+
 
                 } else if (eventType == XmlPullParser.TEXT) {
 
                     textValue = xpp.getText();
 
                 } else if (eventType == XmlPullParser.END_TAG) {
+
+
                     if (inItem) {
                         if (tagName.equalsIgnoreCase("item")) {
                             applications.add(currentRecord);
@@ -72,7 +83,7 @@ public class ParseApplications {
                         } else if (tagName.equals("description")) {
                             currentRecord.setDescription(textValue);
 
-                        } else if (tagName.equalsIgnoreCase("content")) {
+                        } else if (tagName.equalsIgnoreCase("pubDate")) {
                             currentRecord.setContent(textValue);
                         }
                     }
@@ -93,7 +104,7 @@ public class ParseApplications {
             Log.d("LOG", "**************");
             Log.d("LOG", app.getTitle());
             Log.d("LOG", app.getDescription());
-            Log.d("LOG", app.getContent());
+            Log.d("LOG", app.getPubDate());
         }
 
         return operationStatus;
