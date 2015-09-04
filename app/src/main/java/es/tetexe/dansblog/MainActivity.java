@@ -36,7 +36,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 ParseApplications parse = new ParseApplications(xmlData);
-                 boolean operationStatus = parse.process();
+                 parse.process();
             }
         });
 
