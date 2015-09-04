@@ -67,7 +67,7 @@ public class MainActivity extends AppCompatActivity {
 
     private class DownloadData extends AsyncTask<String, Void, String> {
 
-        String myXmlData;
+        String myXmlData; //Variable para almacenar la información del xml
 
 
         @Override
@@ -79,7 +79,7 @@ public class MainActivity extends AppCompatActivity {
             } catch (IOException e) {
                 return "Unable to download XML file.";
             }
-            return null;
+            return myXmlData;
         }
 
         @Override
@@ -89,6 +89,11 @@ public class MainActivity extends AppCompatActivity {
 
         }
 
+        /**
+         * @param theUrl
+         * @return xmlContents
+         * @throws IOException
+         */
         private String downloadXML(String theUrl) throws IOException {
 
             int BUFFER_SIZE = 2000;
@@ -105,7 +110,7 @@ public class MainActivity extends AppCompatActivity {
                 conn.setRequestMethod("GET");
                 conn.setDoInput(true);
                 int response = conn.getResponseCode();
-                Log.d("DownloadXMl", "The response returned is:" + response);
+                Log.d("LOGXML", "The response returned is:" + response);
                 is = conn.getInputStream();
 
                 InputStreamReader isr = new InputStreamReader(is);
@@ -128,7 +133,7 @@ public class MainActivity extends AppCompatActivity {
 
             } finally {
                 if (is != null)
-                    is.close();
+                    is.close(); //Finalizamos el InputStream para liberar la memoria reservada
             }
             //Colocado en un lugar diferente al vídeo
             return xmlContents;
