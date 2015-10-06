@@ -99,7 +99,6 @@ public class MainActivity extends AppCompatActivity {
             int BUFFER_SIZE = 2000;
 
             InputStream is = null;
-
             String xmlContents = "";
 
             try {
@@ -137,7 +136,6 @@ public class MainActivity extends AppCompatActivity {
             }
             //Colocado en un lugar diferente al vídeo
             return xmlContents;
-
         }
 
     }
