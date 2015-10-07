@@ -135,7 +135,7 @@ public class MainActivity extends AppCompatActivity {
                     is.close(); //Finalizamos el InputStream para liberar la memoria reservada
             }
             //Colocado en un lugar diferente al vídeo
-            return xmlContents;key
+            return xmlContents;
         }
 
     }
